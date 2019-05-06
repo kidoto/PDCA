@@ -1,8 +1,5 @@
 <template>
 <div id="list">
-  <button v-on:click="fetch" style="border:solid 1px">fetch</button>
-  <button v-on:click="insert" style="border:solid 1px">登録する</button>
-
   <p>
     みんなのPDCA一覧
   </p>
@@ -46,33 +43,6 @@ export default {
           this.data.push(doc.data());
         })
       })
-  },
-  methods: {
-    fetch: async function() {
-      let database = await store.collection('list')
-        //        .where("plan", "==", "plan")
-        .get().then((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            // 取得したドキュメントで何かやる
-            console.log(doc.data())
-          })
-        })
-    },
-    insert: async function() {
-      await store.collection('list').add({
-        plan: this.plan,
-        delay: this.delay,
-        cancel: this.cancel,
-        apologize: this.apologize
-      });
-      this.clearAll();
-    },
-    clearAll: function() {
-      this.plan = ""
-      this.delay = ""
-      this.cancel = ""
-      this.apologize = ""
-    }
   },
   data() {
     return {

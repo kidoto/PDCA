@@ -27,7 +27,7 @@
       {{plan}}を計画していましたが、
     </li>
     <li>
-      {{delay}}の理由により遅延が発生しているため、
+      {{delay}}が遅れているため、
     </li>
     <li>
       {{cancel}}中止させていただきます。
@@ -42,8 +42,8 @@
     </li>
   </ul>
   <button id="regist" v-on:click="insert(this)" type="submit">この内容で登録</button>
-
-
+  <button id="loginRegist" v-on:click="loginInsert(this)" type="submit">Twitterアカウントでログインして登録</button>
+  <button v-bind:disabled="isProcessing" v-on:click="kk">button</button>
 </div>
 </template>
 <script>
@@ -67,6 +67,7 @@ export default {
     insert: async function() {
       if (this.checkForm()) {
         await store.collection('list').add({
+          name: this.name,
           plan: this.plan,
           delay: this.delay,
           cancel: this.cancel,
@@ -96,6 +97,9 @@ export default {
         this.errors.push('遅延した理由は必須です。');
       }
       return this.errors.length === 0 ? true : false;
+    },
+    kk: function() {
+      console.log(1)
     }
   },
   data() {
@@ -105,6 +109,7 @@ export default {
       delay: "",
       cancel: "",
       apologize: "",
+      isProcessing: false,
       data: [],
       errors: []
     }
@@ -112,7 +117,8 @@ export default {
 }
 </script>
 <style>
-#regist {
+#regist,
+#loginRegist {
   background-color: #89c3eb;
   border: solid 1px;
   box-shadow: 1px 1px;

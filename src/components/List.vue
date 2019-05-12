@@ -6,14 +6,12 @@
   <ul>
     <div id="flex">
       <div id="card" v-for="item of data">
+        {{item.name}}さん
         <li>
           {{item.plan}}を計画していたが
         </li>
         <li>
-          {{item.delay}}が遅延したため
-        </li>
-        <li>
-          中止
+          {{item.delay}}が遅れため
         </li>
       </div>
     </div>
@@ -29,7 +27,6 @@ export default {
   mounted: async function() {
     store = firebase.firestore();
     let database = await store.collection('list')
-      //        .where("plan", "==", "plan")
       .get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           // 取得したドキュメントで何かやる

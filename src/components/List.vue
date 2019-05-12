@@ -5,25 +5,19 @@
   </p>
   <ul>
     <div id="flex">
-
       <div id="card" v-for="item of data">
         <li>
-          {{item.plan}}
+          {{item.plan}}を計画していたが
         </li>
         <li>
-          {{item.delay}}
+          {{item.delay}}が遅延したため
         </li>
         <li>
-          {{item.cancel}}
-        </li>
-        <li>
-          {{item.apologize}}
+          中止
         </li>
       </div>
     </div>
-
   </ul>
-
 </div>
 </template>
 <script>

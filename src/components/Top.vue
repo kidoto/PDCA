@@ -12,7 +12,7 @@
     </ruby>
   </div>
   <div id="description">
-    PDCA回していますか？
+    回していますか？
     <br />
     計画倒れになったもの、
     <br />

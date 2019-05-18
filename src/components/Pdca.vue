@@ -43,7 +43,7 @@
   </ul>
   <button id="regist" v-on:click="insert(this)" type="submit">この内容で登録</button>
   <button id="loginRegist" v-on:click="loginInsert(this)" type="submit">Twitterアカウントでログインして登録</button>
-  <button v-bind:disabled="isProcessing" v-on:click="kk">button</button>
+  <button style="border:solid 1px" v-bind:disabled="isProcessing" v-on:click="kk">button</button>
 </div>
 </template>
 <script>
@@ -65,6 +65,7 @@ export default {
         })
     },
     insert: async function() {
+      this.isProcessing = await new Boolean(true).toString();
       if (this.checkForm()) {
         await store.collection('list').add({
           name: this.name,
@@ -75,10 +76,9 @@ export default {
         });
         this.clearAll();
       } else {
-
-
         alert(this.errors.join("\r\n"));
       }
+      this.isProcessing = await new Boolean(false).toString();
     },
     clearAll: function() {
       this.name = ""
@@ -99,7 +99,7 @@ export default {
       return this.errors.length === 0 ? true : false;
     },
     kk: function() {
-      console.log(1)
+      this.isProcessing = true;
     }
   },
   data() {

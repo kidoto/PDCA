@@ -1,29 +1,18 @@
 # pdca
 
-## Project setup
-```
-npm install
-```
+## これは何
+これまでのPDCAを共有するためのアプリケーション
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### PDCA is 何
+Plan Delay Cancel Apologize
+計画したけど遅れたから中止になって謝る必要があるもの
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### 技術
+- Vue.js
+- Firebase
 
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 機能要件
+- ユーザーはPDCAを登録できる
+- 他人のユーザーのPDCAの一覧を見れる
+- Twitterアカウントでログインをすると、Twitterアカウント名でPDCAを登録できる
+- Twitterアカウントへのリンクが付与される

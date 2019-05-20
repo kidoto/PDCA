@@ -44,13 +44,21 @@
   <button id="regist" v-on:click="insert(this)" type="submit">この内容で登録</button>
   <button id="loginRegist" v-on:click="loginInsert(this)" type="submit">Twitterアカウントでログインして登録</button>
   <button style="border:solid 1px" v-bind:disabled="isProcessing" v-on:click="kk">button</button>
+
+  <modal v-if="showModal" v-on:close="ss">
+    <h3 slot="header">custom header</h3>
+  </modal>
 </div>
 </template>
 <script>
 'use strict'
 import firebase from 'firebase'
+import modal from '@/components/Modal.vue'
 let store = "";
 export default {
+  components: {
+    modal
+  },
   mounted: function() {
     store = firebase.firestore();
   },
@@ -100,6 +108,11 @@ export default {
     },
     kk: function() {
       this.isProcessing = true;
+      this.showModal = true;
+    },
+    ss: function() {
+      this.showModal = false;
+      this.isProcessing = false;
     }
   },
   data() {
@@ -110,6 +123,7 @@ export default {
       cancel: "",
       apologize: "",
       isProcessing: false,
+      showModal: false,
       data: [],
       errors: []
     }

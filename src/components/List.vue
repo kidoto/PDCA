@@ -1,21 +1,23 @@
 <template>
 <div id="list">
-  <p>
-    みんなのPDCA一覧
-  </p>
-  <ul>
-    <div id="flex">
-      <div id="card" v-for="item of data">
-        {{item.name}}さん
-        <li>
-          {{item.plan}}を計画していたが
-        </li>
-        <li>
-          {{item.delay}}が遅れため
-        </li>
-      </div>
-    </div>
-  </ul>
+  <v-container>
+    <v-flex xs12>
+      <p>
+        みんなのPDCA一覧
+      </p>
+      <ul>
+        <div id="card" v-for="item of data">
+          {{item.name}}さん
+          <li>
+            {{item.plan}}を計画していたが
+          </li>
+          <li>
+            {{item.delay}}が遅れため
+          </li>
+        </div>
+      </ul>
+    </v-flex>
+  </v-container>
 </div>
 </template>
 <script>
@@ -58,6 +60,21 @@ a {
 
 #card {
   border: solid 1px;
-  margin: 3px
+  margin: 3px;
+  flex-wrap: wrap;
+  float: left;
+
+}
+
+@media screen and (min-width:480px) {
+
+  #card {
+    border: solid 1px;
+    margin: 3px;
+    flex-wrap: wrap;
+    float: left;
+    width: 30%;
+  }
+
 }
 </style>

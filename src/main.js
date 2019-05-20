@@ -3,6 +3,7 @@ import App from '@/App.vue'
 import router from '@/router.js'
 import firebase from 'firebase'
 import firebaseConfig from '../config/firebase.env'
+import vuetify from 'vuetify'
 require('@/assets/ress.css')
 
 
@@ -19,6 +20,7 @@ var config = {
 firebase.initializeApp(config);
 
 Vue.use(router)
+Vue.use(vuetify)
 
 
 new Vue({

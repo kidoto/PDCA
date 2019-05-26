@@ -185,13 +185,12 @@ export default {
 
   /*　画面サイズが480pxからはここを読み込む　*/
   #pdca input {
-    border: solid 10px;
+    border: solid 1px;
   }
 
   #pdca ul li label {
     position: relative;
     left: 20%;
   }
-
 }
 </style>

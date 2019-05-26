@@ -1,8 +1,14 @@
 <template>
 <div id="app">
-  <transition name="fade" mode="out-in" appear>
-    <router-view></router-view>
-  </transition>
+  <v-app>
+    <v-content>
+      <v-container fluid>
+        <transition name="fade" mode="out-in" appear>
+          <router-view></router-view>
+        </transition>
+      </v-container>
+    </v-content>
+  </v-app>
 </div>
 </template>
 

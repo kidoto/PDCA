@@ -1,36 +1,39 @@
 <template>
 <div id="top">
-  <div id="nav">
-  </div>
-  <div id="title">
-    PDCA
-  </div>
-  <div id="substitle">
-    <ruby>
-      P　D　C　A
-      <rt>Plan Delay Cancel Apologize</rt>
-    </ruby>
-  </div>
-  <div id="description">
-    回していますか？
-    <br />
-    計画倒れになったもの、
-    <br />
-    遅延しているもの、
-    <br />
-    中止になったもの、
-    <br />
-    真摯に謝罪しましょう。
-  </div>
-  <Pdca></Pdca>
-  <div>
-    <router-link to="/list">みんなのPDCAを見る</router-link>
-    <router-link to="/login">ログイン</router-link>
-    <a href="https://twitter.com/intent/tweet?hashtags=hoge&target=_blank">リンクテキスト</a>
-    <br />
+  <v-layout>
+    <v-flex xs12 sm6 offset-sm3>
+      <div id="nav">
+      </div>
+      <div id="title">
+        PDCA
+      </div>
+      <div id="substitle">
+        <ruby>
+          P　D　C　A
+          <rt>Plan Delay Cancel Apologize</rt>
+        </ruby>
+      </div>
+      <div id="description">
+        回していますか？
+        <br />
+        計画倒れになったもの、
+        <br />
+        遅延しているもの、
+        <br />
+        中止になったもの、
+        <br />
+        真摯に謝罪しましょう。
+      </div>
+      <Pdca></Pdca>
+      <div>
+        <router-link to="/list">みんなのPDCAを見る</router-link>
+        <router-link to="/login">ログイン</router-link>
+        <a href="https://twitter.com/intent/tweet?hashtags=hoge&target=_blank">リンクテキスト</a>
+        <br />
 
-  </div>
-
+      </div>
+    </v-flex>
+  </v-layout>
 </div>
 </template>
 

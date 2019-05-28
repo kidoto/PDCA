@@ -41,9 +41,13 @@
       </div>
     </li>
   </ul>
-  <button id="regist" v-on:click="insert(this)" type="submit">この内容で登録</button>
-  <button id="loginRegist" v-on:click="loginInsert(this)" type="submit">Twitterアカウントでログインして登録</button>
-  <button style="border:solid 1px" v-bind:disabled="isProcessing" v-on:click="kk">button</button>
+  <div id="buttons">
+    <button id="regist" v-on:click="insert(this)" type="submit">この内容で登録</button>
+    <button id="loginRegist" v-on:click="loginInsert(this)" type="submit">Twitterアカウントでログインして登録</button>
+    <button style="border:solid 1px" v-bind:disabled="isProcessing" v-on:click="kk">button</button>
+    <router-link to="/list">みんなのPDCAを見る</router-link>
+    <router-link to="/login">ログイン</router-link>
+  </div>
 
   <modal v-if="showModal" v-on:close="ss">
     <h3 slot="header">custom header</h3>
@@ -131,14 +135,16 @@ export default {
 }
 </script>
 <style>
-#regist,
+#buttons button,
+#buttons a,
 #loginRegist {
   background-color: #89c3eb;
   border: solid 1px;
   box-shadow: 1px 1px;
   border-radius: 15px;
   padding: 4px;
-  color: #ffffff
+  color: #ffffff;
+  text-decoration: none;
 }
 
 #pdca ul li label {
@@ -179,18 +185,5 @@ export default {
   font-size: 70%;
   text-align: left;
   margin: 0px 3px 0px 0px;
-}
-
-@media screen and (min-width:480px) {
-
-  /*　画面サイズが480pxからはここを読み込む　*/
-  #pdca input {
-    border: solid 1px;
-  }
-
-  #pdca ul li label {
-    position: relative;
-    left: 20%;
-  }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
 <div id="top">
-  <v-layout>
-    <v-flex xs12 sm6 offset-sm3>
+  <v-layout align-center justify-center>
+    <v-flex xs12 sm12>
       <div id="nav">
       </div>
       <div id="title">
@@ -26,9 +26,6 @@
       </div>
       <Pdca></Pdca>
       <div>
-        <router-link to="/list">みんなのPDCAを見る</router-link>
-        <router-link to="/login">ログイン</router-link>
-        <a href="https://twitter.com/intent/tweet?hashtags=hoge&target=_blank">リンクテキスト</a>
         <br />
 
       </div>
@@ -92,6 +89,8 @@ export default {
   font-family: 'PT Serif', serif;
   font-size: 36px;
   padding: 30px;
+  background-color: #a0d8ef;
+  letter-spacing: 10px;
 }
 
 a {

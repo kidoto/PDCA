@@ -2,23 +2,47 @@
 <div id="pdca">
   <button v-on:click="fetch" style="border:solid 1px">fetch</button>
   <button v-on:click="insert(this)" style="border:solid 1px">登録する</button>
-  <ul>
-    <li>
-      <label for="name">名前</label><input id="name" v-model="name" placeholder="input your name." />
-    </li>
-    <li>
-      <label for="plan"><span id="require">*</span>Plan</label><input id="plan" v-model="plan" />
-    </li>
-    <li>
-      <label for="delay"><span id="require">*</span>Delay</label><input id="delay" v-model="delay" />
-    </li>
-    <li>
-      <label for="cancel">Cancel</label><input id="cancel" v-model="cancel" />
-    </li>
-    <li>
-      <label for="apologize">Apologize</label><input id="apologize" v-model="apologize" />
-    </li>
-  </ul>
+  <v-layout>
+    <v-flex xs5 offset-xs1 id="labels">
+      <ul>
+        <li>
+          名前
+        </li>
+        <li>
+          <span id="require">*</span>Plan
+        </li>
+        <li>
+          <span id="require">*</span>Delay
+        </li>
+        <li>
+          Cancel
+        </li>
+        <li>
+          Apologize
+        </li>
+      </ul>
+    </v-flex>
+    <v-flex xs6 id="inputs">
+      <ul>
+        <li>
+          <input id="name" v-model="name" placeholder="input your name." />
+        </li>
+        <li>
+          <input id="plan" v-model="plan" />
+        </li>
+        <li>
+          <input id="delay" v-model="delay" />
+        </li>
+        <li>
+          <input id="cancel" v-model="cancel" />
+        </li>
+        <li>
+          <input id="apologize" v-model="apologize" />
+        </li>
+      </ul>
+    </v-flex>
+  </v-layout>
+
   <div id="requireNav">
     <span id="require">*</span>は入力必須
   </div>
@@ -161,19 +185,23 @@ export default {
   margin: 5px;
 }
 
-#pdca ul li {
+#inputs {
   margin: 5px 0;
-  text-align: center;
-
+  text-align: left;
 }
 
-#pdca ul li label {
-  position: relative;
-  left: 10%;
+#labels {
+  margin: 5px 0;
+  text-align: right;
 }
 
 #pdca input {
   border: solid 1px;
+}
+
+#labels li,
+#inputs li {
+  padding: 3px
 }
 
 #require {

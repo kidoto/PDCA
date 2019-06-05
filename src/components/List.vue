@@ -4,34 +4,36 @@
   <p>
     みんなのPDCA一覧
   </p>
-  <v-layout>
-    <v-flex xs12 sm6 offset-sm3>
-      <v-card v-for="item of data">
-        <v-img v-bind:src="require('@/assets/img/sunset.jpg')" aspect-ratio="2.75"></v-img>
-        <v-card-title primary-title>
-          <div>
-            <h3 class="headline mb-0">{{showName(item.name)}}</h3>
+  <v-container fluid grid-list-sm>
+    <v-layout row　wrap>
+      <v-flex xs12 sm6 lg2 offset-lg3 v-for="(item, index) of data">
+        <v-card>
+          <v-img v-if="index % 2 == 0" v-bind:src="require('@/assets/img/sunrise.jpg')" aspect-ratio="2.75"></v-img>
+          <v-img v-if="index % 2 != 0" v-bind:src="require('@/assets/img/sunset.jpg')" aspect-ratio="2.75"></v-img>
+          <v-card-title primary-title>
             <div>
-              <ul>
-                <li>
-                  {{item.plan}}を計画していたが
-                </li>
-                <li>
-                  {{item.delay}}が遅れため
-                </li>
-              </ul>
+              <h3 class="headline mb-0">{{showName(item.name)}}</h3>
+              <div>
+                <ul>
+                  <li>
+                    {{item.plan}}を計画していたが
+                  </li>
+                  <li>
+                    {{item.delay}}が遅れため
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
-        </v-card-title>
-        <v-card-actions>
-          <v-btn flat color="orange">
-            <v-img v-bind:src="require('@/assets/svg/awesome.svg')" max-width="16px" height="16px" />
-          </v-btn>
-          <v-btn flat color="orange">Explore</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-flex>
-  </v-layout>
+          </v-card-title>
+          <v-card-actions>
+            <v-btn flat color="orange">
+              <v-img v-bind:src="require('@/assets/svg/awesome.svg')" max-width="16px" height="16px" />
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </div>
 </template>
 <script>
@@ -81,6 +83,15 @@ a {
   margin: 3px;
   flex-wrap: wrap;
   float: left;
+}
 
+.v-card {
+  height: 100%;
+  position: relative;
+}
+
+.v-card__actions {
+  position: absolute;
+  bottom: 0;
 }
 </style>

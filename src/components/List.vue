@@ -66,12 +66,10 @@ export default {
     },
     onAwesome: async function(item) {
       store = firebase.firestore();
-      let database = store.collection('list').doc(item.id)
+      let database = await store.collection('list').doc(item.id)
       await database.update({
         awesome: item.awesome++
-      }).then(() => {
-        item.awesome++;
-      })
+      }).then()
     }
   },
   data() {

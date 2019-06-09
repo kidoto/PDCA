@@ -108,7 +108,8 @@ export default {
           plan: this.plan,
           delay: this.delay,
           cancel: this.cancel,
-          apologize: this.apologize
+          apologize: this.apologize,
+          awesome: 0
         });
         this.clearAll();
       } else {

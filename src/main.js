@@ -22,6 +22,10 @@ firebase.initializeApp(config);
 Vue.use(router)
 Vue.use(vuetify)
 
+Vue.filter('number_format', function (value) {
+    if (! value) { return false; }
+    return value.toString().replace( /([0-9]+?)(?=(?:[0-9]{3})+$)/g , '$1,' );
+});
 
 new Vue({
   router  ,

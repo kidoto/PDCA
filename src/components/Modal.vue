@@ -9,24 +9,18 @@
 
         <div class="modal-header">
           <slot name="header">
-            default header
           </slot>
         </div>
 
         <div class="modal-body">
           <slot name="body">
-            default body
+            <router-link to="/list">みんなのPDCAを見る</router-link>
           </slot>
         </div>
+        <button class="modal-default-button" @click="$emit('close')">
+          Close
+        </button>
 
-        <div class="modal-footer">
-          <slot name="footer">
-            default footer
-            <button class="modal-default-button" @click="$emit('close')">
-              OK
-            </button>
-          </slot>
-        </div>
       </div>
     </div>
   </div>

@@ -1,7 +1,5 @@
 <template>
 <div id="pdca">
-  <button v-on:click="fetch" style="border:solid 1px">fetch</button>
-  <button v-on:click="insert(this)" style="border:solid 1px">登録する</button>
   <v-layout>
     <v-flex xs5 offset-xs1 id="labels">
       <ul>
@@ -65,16 +63,17 @@
       </div>
     </li>
   </ul>
-  <div id="buttons">
-    <button id="regist" v-on:click="insert(this)" type="submit">この内容で登録</button>
-    <button id="loginRegist" v-on:click="loginInsert(this)" type="submit">Twitterアカウントでログインして登録</button>
-    <button style="border:solid 1px" v-bind:disabled="isProcessing" v-on:click="kk">button</button>
-    <router-link to="/list">みんなのPDCAを見る</router-link>
-    <router-link to="/login">ログイン</router-link>
-  </div>
-
-  <modal v-if="showModal" v-on:close="ss">
-    <h3 slot="header">custom header</h3>
+  <v-layout row wrap>
+    <v-flex xs12 sm6 offset-xs1>
+      <div id="buttons">
+        <button id="regist" v-on:click="insert(this)" type="submit">この内容で登録</button>
+        <button id="loginRegist" v-on:click="loginInsert(this)" type="submit">Twitterアカウントでログインして登録</button>
+        <button id="" v-on:click="showList()" type="submit">みんなのPDCAを見る</button>
+      </div>
+    </v-flex>
+  </v-layout>
+  <modal v-if="showModal" v-on:close="closeModal">
+    <h3 slot="header">投稿ありがとうございます！</h3>
   </modal>
 </div>
 </template>
@@ -91,15 +90,6 @@ export default {
     store = firebase.firestore();
   },
   methods: {
-    fetch: async function() {
-      let database = await store.collection('list')
-        .get().then((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            // 取得したドキュメントで何かやる
-            console.log(doc.data())
-          })
-        })
-    },
     insert: async function() {
       this.isProcessing = await new Boolean(true).toString();
       if (this.checkForm()) {
@@ -112,6 +102,7 @@ export default {
           awesome: 0
         });
         this.clearAll();
+        this.showModal = true;
       } else {
         alert(this.errors.join("\r\n"));
       }
@@ -135,13 +126,12 @@ export default {
       }
       return this.errors.length === 0 ? true : false;
     },
-    kk: function() {
-      this.isProcessing = true;
-      this.showModal = true;
-    },
-    ss: function() {
+    closeModal: function() {
       this.showModal = false;
       this.isProcessing = false;
+    },
+    showList: function() {
+      this.$router.push('/list/')
     }
   },
   data() {
